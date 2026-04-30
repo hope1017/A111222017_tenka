@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>天下茶屋 Tenka Tea House</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #121212;
+            --card-bg: #1e1e1e;
+            --primary-orange: #ff4500;
+            --text-main: #ffffff;
+            --text-dim: #9ca3af;
+        }
+        body { background-color: #000; margin: 0; display: flex; justify-content: center; align-items: center; min-height: 100vh; font-family: 'Noto Sans TC', sans-serif; color: var(--text-main); }
+        .phone-container { width: 375px; height: 800px; background-color: var(--bg-color); border: 12px solid #222; border-radius: 45px; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); position: relative; overflow: hidden; display: flex; flex-direction: column; }
+        .notch { width: 150px; height: 25px; background: #222; position: absolute; top: 0; left: 50%; transform: translateX(-50%); border-bottom-left-radius: 15px; border-bottom-right-radius: 15px; z-index: 10; }
+        .content { padding: 40px 20px 20px; flex: 1; overflow-y: auto; }
+        header { text-align: center; margin-bottom: 25px; }
+        .weather-chip { background: rgba(255, 69, 0, 0.1); color: var(--primary-orange); padding: 6px 16px; border-radius: 20px; font-size: 14px; display: inline-block; }
+        .persona-card { background: var(--card-bg); border-radius: 18px; padding: 16px; margin-bottom: 24px; border-left: 5px solid var(--primary-orange); }
+        .recommend-tag { color: var(--primary-orange); font-weight: bold; display: block; margin-top: 8px; font-size: 14px; }
+        .content::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body>
+    <div class="phone-container">
+        <div class="notch"></div>
+        <div class="content">
+            <header>
+                <h1>天下茶屋</h1>
+                <!-- 預留 ID 給 Agent 填寫 -->
+                <div class="weather-chip" id="ui-weather">🌡️ 載入中...</div>
+            </header>
+            <div class="persona-card">
+                <p>您好，歡迎使用天下茶屋結帳系統！</p>
+                <!-- 預留 ID 給 Agent 填寫 -->
+                <span class="recommend-tag" id="ui-recommend">✨ 正在感測環境氣候...</span>
+            </div>
+            <!-- (後續飲品與結帳按鈕同前，此處略過以節省篇幅) -->
+        </div>
+    </div>
+</body>
+</html>
