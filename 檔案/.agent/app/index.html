@@ -13,33 +13,319 @@
             --text-main: #ffffff;
             --text-dim: #9ca3af;
         }
-        body { background-color: #000; margin: 0; display: flex; justify-content: center; align-items: center; min-height: 100vh; font-family: 'Noto Sans TC', sans-serif; color: var(--text-main); }
-        .phone-container { width: 375px; height: 800px; background-color: var(--bg-color); border: 12px solid #222; border-radius: 45px; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); position: relative; overflow: hidden; display: flex; flex-direction: column; }
-        .notch { width: 150px; height: 25px; background: #222; position: absolute; top: 0; left: 50%; transform: translateX(-50%); border-bottom-left-radius: 15px; border-bottom-right-radius: 15px; z-index: 10; }
-        .content { padding: 40px 20px 20px; flex: 1; overflow-y: auto; }
-        header { text-align: center; margin-bottom: 25px; }
-        .weather-chip { background: rgba(255, 69, 0, 0.1); color: var(--primary-orange); padding: 6px 16px; border-radius: 20px; font-size: 14px; display: inline-block; }
-        .persona-card { background: var(--card-bg); border-radius: 18px; padding: 16px; margin-bottom: 24px; border-left: 5px solid var(--primary-orange); }
-        .recommend-tag { color: var(--primary-orange); font-weight: bold; display: block; margin-top: 8px; font-size: 14px; }
+
+        body {
+            background-color: #000;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: 'Noto Sans TC', sans-serif;
+            color: var(--text-main);
+        }
+
+        .phone-container {
+            width: 375px;
+            height: 800px;
+            background-color: var(--bg-color);
+            border: 12px solid #222;
+            border-radius: 45px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .notch {
+            width: 150px;
+            height: 25px;
+            background: #222;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            border-bottom-left-radius: 15px;
+            border-bottom-right-radius: 15px;
+            z-index: 10;
+        }
+
+        .content {
+            padding: 40px 20px 20px;
+            flex: 1;
+            overflow-y: auto;
+        }
+
         .content::-webkit-scrollbar { display: none; }
+
+        header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        h1 {
+            font-size: 24px;
+            font-weight: 700;
+            margin: 0 0 15px;
+            color: var(--text-main);
+        }
+
+        .weather-chip {
+            background: rgba(255, 69, 0, 0.1);
+            color: var(--primary-orange);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            display: inline-block;
+        }
+
+        .persona-card {
+            background: var(--card-bg);
+            border-radius: 18px;
+            padding: 16px;
+            margin-bottom: 24px;
+            border-left: 5px solid var(--primary-orange);
+        }
+
+        .persona-card p {
+            font-size: 15px;
+            color: var(--text-dim);
+            margin: 0 0 10px;
+        }
+
+        .recommend-tag {
+            color: var(--primary-orange);
+            font-weight: bold;
+            display: block;
+            margin-top: 8px;
+            font-size: 14px;
+        }
+
+        /* 以下是新的功能區域樣式 */
+        .section-title {
+            font-size: 14px;
+            color: var(--text-dim);
+            margin-bottom: 12px;
+            font-weight: 500;
+        }
+
+        .menu-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .menu-item {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            border: 1px solid transparent;
+            transition: border-color 0.2s;
+        }
+
+        .menu-item:hover {
+            border-color: var(--primary-orange);
+        }
+
+        .menu-item.selected {
+            border-color: var(--primary-orange);
+            background: rgba(255, 69, 0, 0.05);
+        }
+
+        .item-name { font-size: 16px; font-weight: 500; }
+        .item-price { font-size: 16px; font-weight: 700; color: var(--primary-orange); }
+
+        .topping-row {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .topping-btn {
+            flex: 1;
+            background: var(--card-bg);
+            border: 1px solid transparent;
+            color: var(--text-main);
+            padding: 12px;
+            border-radius: 12px;
+            font-size: 14px;
+            cursor: pointer;
+            font-family: 'Noto Sans TC', sans-serif;
+            text-align: center;
+            transition: all 0.2s;
+        }
+
+        .topping-btn:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .topping-btn.selected {
+            border-color: var(--primary-orange);
+            background: rgba(255, 69, 0, 0.05);
+            color: var(--primary-orange);
+        }
+
+        .custom-row {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .custom-row select, .custom-row input {
+            flex: 1;
+            background: var(--card-bg);
+            border: 1px solid transparent;
+            color: var(--text-main);
+            padding: 12px;
+            border-radius: 12px;
+            font-size: 14px;
+            font-family: 'Noto Sans TC', sans-serif;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+        }
+
+        .add-cart-btn {
+            width: 100%;
+            background: rgba(255, 69, 0, 0.1);
+            color: var(--primary-orange);
+            border: 1px solid var(--primary-orange);
+            padding: 16px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            margin-bottom: 24px;
+            font-family: 'Noto Sans TC', sans-serif;
+            transition: background 0.2s;
+        }
+
+        .add-cart-btn:hover {
+            background: rgba(255, 69, 0, 0.15);
+        }
+
+        .cart-container {
+            background: var(--card-bg);
+            border-radius: 18px;
+            padding: 16px;
+            margin-bottom: 24px;
+        }
+
+        #cart-list {
+            font-size: 14px;
+            color: var(--text-dim);
+            line-height: 1.6;
+        }
+
+        .final-price {
+            margin-top: 10px;
+            text-align: right;
+            font-weight: 700;
+            color: var(--primary-orange);
+        }
+
+        .delivery-input {
+            width: 100%;
+            background: var(--card-bg);
+            border: 1px solid transparent;
+            color: var(--text-main);
+            padding: 16px;
+            border-radius: 12px;
+            font-size: 14px;
+            margin-bottom: 24px;
+            box-sizing: border-box; /* 重要：讓 padding 不會撐破容器 */
+        }
+
+        .checkout-btn {
+            width: 100%;
+            background: var(--primary-orange);
+            color: #ffffff;
+            border: none;
+            padding: 16px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            font-family: 'Noto Sans TC', sans-serif;
+        }
+
     </style>
 </head>
 <body>
     <div class="phone-container">
         <div class="notch"></div>
         <div class="content">
+            
             <header>
                 <h1>天下茶屋</h1>
-                <!-- 預留 ID 給 Agent 填寫 -->
-                <div class="weather-chip" id="ui-weather">🌡️ 載入中...</div>
+                <div class="weather-chip" id="ui-weather">⏳ 載入中...</div>
             </header>
+
             <div class="persona-card">
                 <p>您好，歡迎使用天下茶屋結帳系統！</p>
-                <!-- 預留 ID 給 Agent 填寫 -->
-                <span class="recommend-tag" id="ui-recommend">✨ 正在感測環境氣候...</span>
+                <span class="recommend-tag" id="ui-recommned">✨ 正在感測環境氣候...</span>
             </div>
-            <!-- (後續飲品與結帳按鈕同前，此處略過以節省篇幅) -->
+
+            <div class="section-title">1. 選擇茶飲 (Knowledge)</div>
+            <div class="menu-list">
+                <div class="menu-item">
+                    <span class="item-name">天下紅茶</span>
+                    <span class="item-price">$40</span>
+                </div>
+                <div class="menu-item selected">
+                    <span class="item-name">天下綠茶</span>
+                    <span class="item-price">$35</span>
+                </div>
+                <div class="menu-item">
+                    <span class="item-name">特調奶茶</span>
+                    <span class="item-price">$55</span>
+                </div>
+            </div>
+
+            <div class="section-title">2. 加料區 (每個 +$10)</div>
+            <div class="topping-row">
+                <button class="topping-btn">珍珠 (Boba)</button>
+                <button class="topping-btn selected">椰果 (Jelly)</button>
+            </div>
+
+            <div class="section-title">3. 客製化</div>
+            <div class="custom-row">
+                <select id="select-sugar">
+                    <option>全糖</option>
+                    <option>半糖</option>
+                    <option>微糖</option>
+                    <option>無糖</option>
+                </select>
+                <select id="select-temp">
+                    <option value="Ice">冰</option>
+                    <option value="Hot">熱</option>
+                </select>
+                <input type="number" id="input-qty" value="1" min="1">
+            </div>
+
+            <button class="add-cart-btn">＋ 加入購物車</button>
+
+            <div class="cart-container">
+                <div class="section-title">🛒 購物車明細</div>
+                <div id="cart-list">
+                    天下紅茶(珍珠) x 1 <span style="float: right;">$50</span>
+                </div>
+                <div class="final-price">小計：$50</div>
+            </div>
+
+            <div class="section-title">4. 配送距離 (上限 5km)</div>
+            <input type="number" class="delivery-input" placeholder="請輸入公里數">
+            
+            <button class="checkout-btn">確認訂單 (S4 結帳)</button>
+
         </div>
     </div>
+    <script src="script.js"></script>
 </body>
 </html>
